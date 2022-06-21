@@ -27,24 +27,24 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-188914b86b7cad47bcc5.js"
+    "url": "webpack-runtime-350b571b178efade6156.js"
   },
   {
     "url": "framework-6da311f71071b17d4003.js"
   },
   {
-    "url": "app-47356032607e63261508.js"
+    "url": "app-2f1c0ef46edf1fd9bcef.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "46487025d10a33cc7492d52d0b3afdba"
+    "revision": "684a9a655d4997602fb6a34ee3c759d4"
   },
   {
     "url": "polyfill-a0ae96764244e16a357f.js"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "c3dce7099a619dd397c15785635db19b"
+    "revision": "0c58a3a913e46097adba00a226285a9d"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
@@ -149,12 +149,12 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   lastNavigationRequest = event.request.url
 
   let { pathname } = new URL(event.request.url)
-  pathname = pathname.replace(new RegExp(`^`), ``)
+  pathname = pathname.replace(new RegExp(`^/lc.github.io`), ``)
 
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/app-47356032607e63261508.js`))) {
+  if (!resources || !(await caches.match(`/lc.github.io/app-2f1c0ef46edf1fd9bcef.js`))) {
     return await fetch(event.request)
   }
 
@@ -167,7 +167,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
     }
   }
 
-  const offlineShell = `/offline-plugin-app-shell-fallback/index.html`
+  const offlineShell = `/lc.github.io/offline-plugin-app-shell-fallback/index.html`
   const offlineShellWithKey = workbox.precaching.getCacheKeyForURL(offlineShell)
   return await caches.match(offlineShellWithKey)
 })
