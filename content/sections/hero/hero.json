@@ -3,8 +3,8 @@
   "image": {
     "src": "../../images/waving-hand.png",
     "alt": "Waving Hand Emoji"
-  },
-  "title": "I'm a Gatsby Starter",
+  },  
+  "title": "欢迎来到小罗的blog",
   "subtitle": {
     "prefix": "I do all the setup ",
     "highlight": "for you",

@@ -17,7 +17,7 @@
     }
   },
   "siteConfiguration": {
-    "logo": { "text": "Portfolio" },
+    "logo": { "text": "Luo" },
     "navigation": {
       "header": [
         { "label": "About", "url": "/#about" },
