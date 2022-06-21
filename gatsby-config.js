@@ -1,5 +1,5 @@
 module.exports = {
-  pathPrefix: "/lc.github.io", // 打包后静态资源请求的路径
+  pathPrefix: "/", // 打包后静态资源请求的路径
   plugins: [
     {
       resolve: "gatsby-theme-portfolio-minimal",
