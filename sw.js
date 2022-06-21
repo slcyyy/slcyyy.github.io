@@ -27,24 +27,24 @@ workbox.core.clientsClaim();
  */
 self.__precacheManifest = [
   {
-    "url": "webpack-runtime-350b571b178efade6156.js"
+    "url": "webpack-runtime-962ba29e7fef31a14f3d.js"
   },
   {
     "url": "framework-6da311f71071b17d4003.js"
   },
   {
-    "url": "app-2f1c0ef46edf1fd9bcef.js"
+    "url": "app-6a833509a556bbd73c93.js"
   },
   {
     "url": "offline-plugin-app-shell-fallback/index.html",
-    "revision": "684a9a655d4997602fb6a34ee3c759d4"
+    "revision": "1ede5aa3d145cd8b6efebf0d661ac736"
   },
   {
     "url": "polyfill-a0ae96764244e16a357f.js"
   },
   {
     "url": "manifest.webmanifest",
-    "revision": "0c58a3a913e46097adba00a226285a9d"
+    "revision": "6680ab1e29c31fde2544999cbcb2ceb2"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
@@ -149,12 +149,12 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
   lastNavigationRequest = event.request.url
 
   let { pathname } = new URL(event.request.url)
-  pathname = pathname.replace(new RegExp(`^/lc.github.io`), ``)
+  pathname = pathname.replace(new RegExp(`^`), ``)
 
   // Check for resources + the app bundle
   // The latter may not exist if the SW is updating to a new version
   const resources = await idbKeyval.get(`resources:${pathname}`)
-  if (!resources || !(await caches.match(`/lc.github.io/app-2f1c0ef46edf1fd9bcef.js`))) {
+  if (!resources || !(await caches.match(`/app-6a833509a556bbd73c93.js`))) {
     return await fetch(event.request)
   }
 
@@ -167,7 +167,7 @@ const navigationRoute = new NavigationRoute(async ({ event }) => {
     }
   }
 
-  const offlineShell = `/lc.github.io/offline-plugin-app-shell-fallback/index.html`
+  const offlineShell = `/offline-plugin-app-shell-fallback/index.html`
   const offlineShellWithKey = workbox.precaching.getCacheKeyForURL(offlineShell)
   return await caches.match(offlineShellWithKey)
 })
